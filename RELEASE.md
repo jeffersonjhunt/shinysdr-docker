@@ -1,4 +1,4 @@
-### 04-03-2019 (Wed Apr  3 15:35:19 CDT 2019)
+### v1.0.0 (Wed Apr  3 15:35:19 CDT 2019)
 
 * initial commit to GitHub
   * [GitHub](https://github.com/jeffersonjhunt/shinysdr-docker "GitHub Repo")
