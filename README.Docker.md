@@ -26,7 +26,7 @@
 
 * __Supported Docker versions:__
 
-   the latest release (down to 18 on a best-effort basis)
+   the latest release (down to 16 on a best-effort basis)
 
 # What is GNURadio + ShinySDR?
 
@@ -45,7 +45,7 @@
 $ mkdir ~/.shinysdr
 $ docker run -it --rm -v ~/.shinysdr:/config jeffersonjhunt/shinysdr init /config/my-config
 ```
-This will create a `.shindysdr` directory in `$HOME` and run the `--create config` command of ShinySDR. In this case the config will be named `my-config` and will be added as sub-directory of `.shindysdr`
+This will create a `.shindysdr` directory in `$HOME` and run the `--create config` command of ShinySDR. In this case the config will be named `my-config` and will be added as sub-directory of `~/.shindysdr`
 
 Edit the `config.pl` in `~/.shinysdr/my-config` to match your requirements following the instructions at [ShinySDR Manual: Configuration and devices](https://shinysdr.switchb.org/manual/configuration "ShinySDR Manual: Configuration and devices")
 
@@ -57,7 +57,8 @@ This will run ShinySDR with the config located at `~/.shinysdr/my-config`
 
 # Building the Dockerfile
 
-For more information about the build, versions used and how to modify it see the `[README.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/README.md "README.md")`
+For more information about the build, versions used and how to modify it see the
+[README.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/README.md "README.md")
 
 # License
 View license information for the software contained in this image.
