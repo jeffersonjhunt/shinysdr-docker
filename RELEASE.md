@@ -7,5 +7,5 @@
 * added the following Python modules to fix warnings
   * service_identity
   * pyasn1-modules
-* add Docker management script `shinysdr-entrypoint.sh`
+* add Docker entrypoint script `shinysdr-entrypoint.sh`
 

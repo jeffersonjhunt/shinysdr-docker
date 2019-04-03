@@ -33,13 +33,17 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py \
     gnuradio-dev \
     gr-osmosdr
 
+# Add modules/plugins
+RUN apt-get install -y \
+  python-libhamlib2 \
+  gr-air-modes
+
 # Run build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr/ \
   && cd shinysdr \
   && ./fetch-js-deps.sh \
-  # this should be added to fetch-js-deps.sh
+  # Fix these Python deps in ShinySDR code base
   && pip install --upgrade service_identity \
-  # this should be added to fetch-js-deps.sh
   && pip install --upgrade pyasn1-modules \
   && python setup.py build \
   && python setup.py install
