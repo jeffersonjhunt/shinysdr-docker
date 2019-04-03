@@ -5,7 +5,7 @@ docker run --rm \
   -p 8101:8101 \
   -v ~/.shinysdr:/config \
   --name shinysdr \
-  jjh/shinysdr init /config/my-config
+  jjh01112358/shindysdr init /config/my-config
 ```
 
 ```
@@ -14,5 +14,5 @@ docker run --rm \
   -p 8101:8101 \
   -v ~/.shinysdr:/config \
   --name shinysdr \
-  jjh/shinysdr start /config/my-config
+  jjh01112358/shindysdr start /config/my-config
 ```
