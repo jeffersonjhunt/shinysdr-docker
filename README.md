@@ -6,7 +6,7 @@ This document covers the current state of the Docker built image. It enumerates 
 
 See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/RELEASE.md "RELEASE.md") for more details.
 
-* 04-03-2018
+* 04-03-2018 [Docker Image](https://hub.docker.com/r/jeffersonjhunt/shinysdr "Docker Image")
 
 ## Basics
 
