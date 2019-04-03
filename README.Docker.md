@@ -5,22 +5,28 @@
 # Quick reference
 
 * __Where to get help:__
-    the Docker Community Forums, the Docker Community Slack, or Stack Overflow
+
+   TBD
 
 * __Where to file issues:__
-    https://github.com/jeffersonjhunt/shinysdr-docker/issues
+
+   https://github.com/jeffersonjhunt/shinysdr-docker/issues
 
 * __Maintained by:__
-    jjh01112358 *yes I know its supposed to be 0112358!*
+
+   [jeffersonjhunt](https://hub.docker.com/u/jeffersonjhunt "Profile of Jefferson J Hunt")
 
 * __Supported architectures: (more info)__
-    amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386
+
+   amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386
 
 * __Source of this description:__
-    On the GitHub repo at [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/README.Docker.md "README.Docker.md")
 
-__Supported Docker versions:__
-    the latest release (down to 18 on a best-effort basis)
+   On the GitHub repo at [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/README.Docker.md "README.Docker.md")
+
+* __Supported Docker versions:__
+
+   the latest release (down to 18 on a best-effort basis)
 
 # What is GNURadio + ShinySDR?
 
@@ -37,7 +43,7 @@ __Supported Docker versions:__
 ### Config ShinySDR
 ```bash
 $ mkdir ~/.shinysdr
-$ docker run -it --rm docker run --rm -v ~/.shinysdr:/config jjh0112358/shinysdr init /config/my-config
+$ docker run -it --rm -v ~/.shinysdr:/config jeffersonjhunt/shinysdr init /config/my-config
 ```
 This will create a `.shindysdr` directory in `$HOME` and run the `--create config` command of ShinySDR. In this case the config will be named `my-config` and will be added as sub-directory of `.shindysdr`
 
@@ -45,7 +51,7 @@ Edit the `config.pl` in `~/.shinysdr/my-config` to match your requirements follo
 
 ### Run ShinySDR
 ```bash
-$ docker run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config --name shinysdr jjh0112358/shinysdr start /config/my-config
+$ docker run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config --name shinysdr jeffersonjhunt/shinysdr start /config/my-config
 ```
 This will run ShinySDR with the config located at `~/.shinysdr/my-config`
 
