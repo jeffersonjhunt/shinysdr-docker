@@ -1,3 +1,8 @@
+### v1.1.0 (Fri Apr 12 13:44:22 CDT 2019)
+
+* gr-air-modes updated to latest
+  * [gr-air-modes](https://github.com/bistromath/gr-air-modes "gr-air-modes")
+
 ### v1.0.0 (Wed Apr  3 15:35:19 CDT 2019)
 
 * initial commit to GitHub

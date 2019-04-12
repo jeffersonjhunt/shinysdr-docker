@@ -20,7 +20,13 @@ RUN apt-get install -y \
     # sigh this is needed to support shinysdr/fetch-js-deps.sh
     wget \
     vim-nox \
-    git
+    git \
+    build-essential \
+    cmake \
+    cmake-data \
+    pkg-config \
+    doxygen \
+    swig
 
 WORKDIR /opt
 
@@ -35,8 +41,12 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py \
 
 # Add modules/plugins
 RUN apt-get install -y \
-  python-libhamlib2 \
-  gr-air-modes
+  python-libhamlib2
+
+RUN curl https://codeload.github.com/bistromath/gr-air-modes/zip/master -o /tmp/gr-air-modes.zip \
+  && unzip /tmp/gr-air-modes.zip \
+  && cd gr-air-modes-master \
+  && mkdir build && cd build && cmake ../ && make && make install && ldconfig
 
 # Run build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr/ \

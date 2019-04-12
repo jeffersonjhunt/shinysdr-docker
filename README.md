@@ -4,13 +4,15 @@ This document covers the current state of the Docker built image. It enumerates 
 
 ## Releases
 
-See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/RELEASE.md "RELEASE.md") for more details.
+See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.1.0/RELEASE.md "RELEASE.md") for more details.
 
-* v1.0.0 [Docker Image](https://hub.docker.com/r/jeffersonjhunt/shinysdr "Docker Image")
+* v1.1.0 - gr-air-modes update
+    * [Dockerfile](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.1.0/Dockerfile "Dockerfile")
+    * [Docker Image](https://hub.docker.com/r/jeffersonjhunt/shinysdr "Docker Image")
 
 ## Basics
 
-See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
+See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.0.0/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
 
 ### Init
 
