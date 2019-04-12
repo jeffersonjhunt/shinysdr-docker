@@ -39,10 +39,17 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py \
     gnuradio-dev \
     gr-osmosdr
 
-# Add modules/plugins
-RUN apt-get install -y \
-  python-libhamlib2
+# Add modules/plugins python-libhamlib2 (currently no USRP support)
+WORKDIR /opt
+RUN curl https://iweb.dl.sourceforge.net/project/hamlib/hamlib/3.3/hamlib-3.3.tar.gz -o /tmp/hamlib-3.3.tar.gz \
+  && tar -zxvf /tmp/hamlib-3.3.tar.gz \
+  && cd hamlib-3.3 \
+  && ./configure --prefix=/usr \
+    --with-python-binding \
+    --with-xml-support \
+  && make && make install
 
+WORKDIR /opt
 RUN curl https://codeload.github.com/bistromath/gr-air-modes/zip/master -o /tmp/gr-air-modes.zip \
   && unzip /tmp/gr-air-modes.zip \
   && cd gr-air-modes-master \

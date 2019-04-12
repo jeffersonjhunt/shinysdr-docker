@@ -1,3 +1,8 @@
+### v1.2.0 (TBD)
+
+* updated to latest versions
+  * [python-libhamlib2]( "python-libhamlib2")
+
 ### v1.1.0 (Fri Apr 12 13:44:22 CDT 2019)
 
 * gr-air-modes updated to latest
