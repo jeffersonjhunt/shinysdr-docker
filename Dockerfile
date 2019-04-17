@@ -50,7 +50,6 @@ WORKDIR /opt
 
 # Add modules/plugins python-libhamlib2 (currently no USRP support)
 
-#multimon-ng (for receiving APRS).
 #rtl_433 (for receiving miscellaneous telemetry).
 #gr-dsd (for receiving digital voice modes supported by DSD).
 
@@ -86,6 +85,13 @@ RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
   cd gr-radioteletype && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf /opt/gr-radioteletype
+
+RUN git clone https://github.com/EliasOenal/multimon-ng.git && \
+  cd multimon-ng && \
+  mkdir build && cd build && \
+  cmake ../ && \
+  make && make install && \
+  cd /opt && rm -rf multimon-ng
 
 # Run build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr/ && \
