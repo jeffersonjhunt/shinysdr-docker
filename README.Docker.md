@@ -1,8 +1,8 @@
 # Supported tags and respective Dockerfile links
 
 * [latest](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/Dockerfile "Dockerfile")
-* [v1.0.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.0.0/Dockerfile "Dockerfile")
 * [v1.1.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.1.0/Dockerfile "Dockerfile")
+* [v1.2.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.2.0/Dockerfile "Dockerfile")
 
 # Quick reference
 
@@ -20,7 +20,7 @@
 
 * __Supported architectures: (more info)__
 
-   amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386
+   amd64, i386, armX (in progress)
 
 * __Source of this description:__
 

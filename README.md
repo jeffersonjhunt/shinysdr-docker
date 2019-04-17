@@ -91,14 +91,15 @@ There are old and missing Python modules that require the following modules be a
 
 The following optional plugins/modules are being added. The table tracks the current status, source, etc...
 
-| Plugin/Module    | Status   | Notes                                |
-| ---------------- |:--------:| ------------------------------------:|
-| python-libhamlib2| complete | Controlling external hardware radios |
-| gr-air-modes     | complete | ADS-B, aircraft transponders         |
-| gr-radioteletype | todo     | RTTY and PSK31                       |
-| wsjtx            | partial  | WSPR weak-signal radio               |
-| multimon-ng      | todo     | decodes digital transmission modes   |
-| rtl_433          | todo     | Miscellaneous telemetry              |
-| gr-dsd           | todo     | Digital voice modes supported by DSD |
+| Plugin/Module    | Status   | Version | Notes                                |
+| ---------------- |:--------:|:-------:| ------------------------------------:|
+| python-libhamlib2| complete |         | Controlling external hardware radios |
+| gr-air-modes     | complete |         | ADS-B, aircraft transponders         |
+| gr-radioteletype | complete |         | RTTY and PSK31                       |
+| wsjtx            | complete |  2.0.1  | WSPR weak-signal radio               |
+| multimon-ng      | complete |04/17/19*| decodes digital transmission modes   |
+| rtl_433          | todo     |         | Miscellaneous telemetry              |
+| gr-dsd           | todo     |         | Digital voice modes supported by DSD |
+&ast; master as of build date
 
 *this list is no doubt incomplete and other modules/plugins will be added as time permits*

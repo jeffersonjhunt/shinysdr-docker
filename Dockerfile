@@ -50,7 +50,6 @@ WORKDIR /opt
 
 # Add modules/plugins python-libhamlib2 (currently no USRP support)
 
-#rtl_433 (for receiving miscellaneous telemetry).
 #gr-dsd (for receiving digital voice modes supported by DSD).
 
 #
@@ -92,6 +91,33 @@ RUN git clone https://github.com/EliasOenal/multimon-ng.git && \
   cmake ../ && \
   make && make install && \
   cd /opt && rm -rf multimon-ng
+
+RUN git clone https://github.com/pothosware/SoapySDR.git && \
+  cd SoapySDR && \
+  git fetch --all --tags --prune && \
+  git checkout tags/soapy-sdr-0.7.1 && \
+  mkdir build && cd build && \
+  cmake ../ && \
+  make && make install && \
+  cd /opt && rm -rf SoapySDR
+
+RUN git clone https://github.com/merbanan/rtl_433 && \
+  apt-get install -y librtlsdr-dev && \
+  cd rtl_433 && \
+  git fetch --all --tags --prune && \
+  git checkout tags/18.12 && \
+  mkdir build && cd build && \
+  cmake ../ && \
+  make && make install && \
+  cd /opt && rm -rf rtl_433
+
+RUN git clone https://github.com/argilo/gr-dsd.git && \
+  apt-get install -y libsndfile1-dev libitpp-dev && \
+  cd gr-dsd && \
+  mkdir build && cd build && \
+  cmake ../ && \
+  make && make install && ldconfig && \
+  cd /opt && rm -rf gr-dsd
 
 # Run build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr/ && \

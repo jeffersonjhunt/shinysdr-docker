@@ -1,7 +1,12 @@
-### v1.2.0 (TBD)
+### v1.2.0 (Wed Apr 17 16:54:07 CDT 2019)
 
-* updated to latest versions
-  * [python-libhamlib2]( "python-libhamlib2")
+* updated to latest versions of supported plugins
+  * [WSJTX](https://physics.princeton.edu/pulsar/k1jt "WSJTX")
+  * [gr-radioteletype](https://github.com/bitglue/gr-radioteletype "gr-radioteletype")
+  * [multimon-ng](https://github.com/EliasOenal/multimon-ng "multimon-ng")
+  * [rtl_433](https://github.com/merbanan/rtl_433 "rtl_433")
+  * [gr-dsd]( "gr-dsd")
+* migrated to debian:stable-slim to reduce image size
 
 ### v1.1.0 (Fri Apr 12 13:44:22 CDT 2019)
 
