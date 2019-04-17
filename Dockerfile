@@ -28,14 +28,17 @@ RUN apt-get install -y \
       texinfo \
       dh-autoreconf
 
-# Install Supporting Apps
+# Install Supporting apps & libraries
 RUN apt-get install -y \
       python \    
       gfortran \
       gnuradio \
       gnuradio-dev \
       gr-osmosdr \
-      libusb-1.0-0-dev && \
+      libusb-1.0-0-dev \
+      qtmultimedia5-dev \
+      libqt5serialport5-dev \
+      libfftw3-dev && \
   curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
   python /tmp/get-pip.py && \
   pip install --upgrade pip
