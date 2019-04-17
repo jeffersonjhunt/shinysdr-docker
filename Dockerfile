@@ -35,7 +35,10 @@ RUN apt-get install -y \
       gnuradio \
       gnuradio-dev \
       gr-osmosdr \
+      libudev-dev \
       libusb-1.0-0-dev \
+      qttools5-dev \
+      qttools5-dev-tools \
       qtmultimedia5-dev \
       libqt5serialport5-dev \
       libfftw3-dev && \
@@ -52,7 +55,8 @@ WORKDIR /opt
 #gr-dsd (for receiving digital voice modes supported by DSD).
 
 #
-# Hamlib is currently installed by the WSJTX step
+# Hamlib is currently installed by the WSJTX step. Both should be installed 
+# with WSJTX using an alternate prefix
 #
 # RUN curl https://iweb.dl.sourceforge.net/project/hamlib/hamlib/3.3/hamlib-3.3.tar.gz -o /tmp/hamlib-3.3.tar.gz && \
 #   tar -zxvf /tmp/hamlib-3.3.tar.gz && \
@@ -85,10 +89,10 @@ RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
 
 # Run build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr/ && \
-  cd shinysdr \
-  ./fetch-js-deps.sh && \
+  cd shinysdr && \
   pip install --upgrade service_identity && \
   pip install --upgrade pyasn1-modules && \
+  ./fetch-js-deps.sh && \
   python setup.py build && \
   python setup.py install && \
   cd /opt && rm -rf /opt/shinysdr
@@ -104,8 +108,11 @@ RUN apt-get purge -y \
       cmake-data \
       pkg-config \
       doxygen \
-      swig texinfo \
-      dh-autoreconf && \
+      swig \
+      texinfo \
+      dh-autoreconf \
+      qttools5-dev \
+      qttools5-dev-tools && \
   apt-get autoclean -y && \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
