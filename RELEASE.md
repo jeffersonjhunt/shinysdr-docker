@@ -1,3 +1,5 @@
+### v1.3.0 (TBD)
+
 ### v1.2.1 (Thu Apr 18 10:48:53 CDT 2019)
 
 * minor documentation updates
