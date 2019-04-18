@@ -101,6 +101,7 @@ The following optional plugins/modules are being added. The table tracks the cur
 | rtl_433          | complete |  18.12  | Miscellaneous telemetry              |
 | gr-dsd           | complete |04/17/19*| Digital voice modes supported by DSD |
 | SoapySDR         | complete |  0.7.1  | Vendor/platform neutral SDR library  |
+
 &ast; master as of build date
 &ast;&ast; patched version from wsjtx
 
