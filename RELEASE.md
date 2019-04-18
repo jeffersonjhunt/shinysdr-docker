@@ -1,5 +1,9 @@
-### v1.3.0 (TBD)
+### v1.2.1 (Thu Apr 18 10:48:53 CDT 2019)
 
+* minor documentation updates
+* support for hamlib 3.3 and hamlib wsjtx custom libraries
+* additional image cleanup and size reduction
+* latest debian-slim image (as of 4/18/2019)
 
 ### v1.2.0 (Wed Apr 17 16:54:07 CDT 2019)
 

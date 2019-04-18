@@ -13,7 +13,7 @@ ENV LC_ALL=en_US.utf-8
 ENV LANGUAGE=en_US:en
 ENV PYTHONIOENCODING=utf-8
 
-# Install apps needed to build
+# Install supporting apps needed to build/run
 RUN apt-get install -y \    
       curl \
       wget \
@@ -26,15 +26,12 @@ RUN apt-get install -y \
       doxygen \
       swig \
       texinfo \
-      dh-autoreconf
-
-# Install Supporting apps & libraries
-RUN apt-get install -y \
+      dh-autoreconf \
       python \    
       gfortran \
+      gr-osmosdr \
       gnuradio \
       gnuradio-dev \
-      gr-osmosdr \
       libudev-dev \
       libusb-1.0-0-dev \
       qttools5-dev \
@@ -48,37 +45,28 @@ RUN apt-get install -y \
 
 WORKDIR /opt
 
-# Add modules/plugins python-libhamlib2 (currently no USRP support)
-
-#gr-dsd (for receiving digital voice modes supported by DSD).
-
-#
-# Hamlib is currently installed by the WSJTX step. Both should be installed 
-# with WSJTX using an alternate prefix
-#
-# RUN curl https://iweb.dl.sourceforge.net/project/hamlib/hamlib/3.3/hamlib-3.3.tar.gz -o /tmp/hamlib-3.3.tar.gz && \
-#   tar -zxvf /tmp/hamlib-3.3.tar.gz && \
-#   cd hamlib-3.3 && \
-#   ./configure --prefix=/usr \
-#     --with-python-binding \
-#     --with-xml-support && \
-#   make && make install && \
-#   cd /opt && rm -rf /opt/hamlib-3.3
+# Add modules/plugins
+RUN curl https://iweb.dl.sourceforge.net/project/hamlib/hamlib/3.3/hamlib-3.3.tar.gz -o /tmp/hamlib-3.3.tar.gz && \
+  tar -zxvf /tmp/hamlib-3.3.tar.gz && \
+  cd hamlib-3.3 && \
+  ./configure --prefix=/usr \
+    --with-python-binding \
+    --with-xml-support && \
+  make && make install && \
+  cd /opt && rm -rf /opt/hamlib-3.3
 
 RUN curl --insecure https://physics.princeton.edu/pulsar/k1jt/wsjtx-2.0.1.tgz -o /tmp/wsjtx-2.0.1.tgz && \
   tar zxvf /tmp/wsjtx-2.0.1.tgz && \
   cd wsjtx-2.0.1 && \
   mkdir build && cd build && \
   cmake -DWSJT_SKIP_MANPAGES=ON -DWSJT_GENERATE_DOCS=OFF ../ && \
-  cmake --build . && \
-  cmake --build . --target install && \
+  cmake --build . && cmake --build . --target install && ldconfig && \
   cd /opt && rm -rf wsjtx-2.0.1
 
-RUN curl https://codeload.github.com/bistromath/gr-air-modes/zip/master -o /tmp/gr-air-modes.zip && \
-  unzip /tmp/gr-air-modes.zip && \
-  cd gr-air-modes-master && \
+RUN git clone https://github.com/bistromath/gr-air-modes.git && \
+  cd gr-air-modes && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf /opt/gr-air-modes-master
+  cd /opt && rm -rf /opt/gr-air-modes
 
 RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
   cd gr-radioteletype && \
@@ -87,40 +75,32 @@ RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
 
 RUN git clone https://github.com/EliasOenal/multimon-ng.git && \
   cd multimon-ng && \
-  mkdir build && cd build && \
-  cmake ../ && \
-  make && make install && \
+  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf multimon-ng
 
 RUN git clone https://github.com/pothosware/SoapySDR.git && \
   cd SoapySDR && \
   git fetch --all --tags --prune && \
   git checkout tags/soapy-sdr-0.7.1 && \
-  mkdir build && cd build && \
-  cmake ../ && \
-  make && make install && \
+  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf SoapySDR
 
-RUN git clone https://github.com/merbanan/rtl_433 && \
+RUN git clone https://github.com/merbanan/rtl_433.git && \
   apt-get install -y librtlsdr-dev && \
   cd rtl_433 && \
   git fetch --all --tags --prune && \
   git checkout tags/18.12 && \
-  mkdir build && cd build && \
-  cmake ../ && \
-  make && make install && \
+  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf rtl_433
 
 RUN git clone https://github.com/argilo/gr-dsd.git && \
   apt-get install -y libsndfile1-dev libitpp-dev && \
   cd gr-dsd && \
-  mkdir build && cd build && \
-  cmake ../ && \
-  make && make install && ldconfig && \
+  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf gr-dsd
 
-# Run build and install ShinySDR
-RUN git clone https://github.com/kpreid/shinysdr/ && \
+# Build and install ShinySDR
+RUN git clone https://github.com/kpreid/shinysdr.git && \
   cd shinysdr && \
   pip install --upgrade service_identity && \
   pip install --upgrade pyasn1-modules && \
@@ -143,8 +123,14 @@ RUN apt-get purge -y \
       swig \
       texinfo \
       dh-autoreconf \
+      gnuradio-dev \
+      libudev-dev \
+      libusb-1.0-0-dev \
       qttools5-dev \
-      qttools5-dev-tools && \
+      qttools5-dev-tools \
+      qtmultimedia5-dev \
+      libqt5serialport5-dev \
+      libfftw3-dev && \
   apt-get autoclean -y && \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
