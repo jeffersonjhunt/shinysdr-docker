@@ -1,5 +1,15 @@
 ### v1.3.0 (TBD)
 
+* repackage with __squish__ to reduce image size by >30%
+* create multi-platform releases
+  * amd64
+  * i386
+  * armhf
+  * arm32v5
+  * arm32v6
+  * arm32v7
+  * arm64v8
+
 ### v1.2.1 (Thu Apr 18 10:48:53 CDT 2019)
 
 * minor documentation updates

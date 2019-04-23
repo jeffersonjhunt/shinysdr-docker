@@ -1,14 +1,10 @@
 # Supported tags and respective Dockerfile links
 
 * [latest](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/Dockerfile "Dockerfile")
-* [v1.1.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.1.0/Dockerfile "Dockerfile")
 * [v1.2.1](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.2.1/Dockerfile "Dockerfile")
+* [v1.3.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.3.0/Dockerfile "Dockerfile")
 
 # Quick reference
-
-* __Where to get help:__
-
-   TBD
 
 * __Where to file issues:__
 
@@ -20,7 +16,7 @@
 
 * __Supported architectures: (more info)__
 
-   amd64, i386, armX (in progress)
+   amd64, i386, armhf, arm32v5, arm32v6, arm32v7, arm64v8
 
 * __Source of this description:__
 
@@ -28,7 +24,7 @@
 
 * __Supported Docker versions:__
 
-   the latest release (down to 16 on a best-effort basis)
+   the latest CE release (down to 17-ce on a best-effort basis)
 
 # What is GNURadio + ShinySDR?
 
