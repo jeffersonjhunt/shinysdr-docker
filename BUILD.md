@@ -11,59 +11,41 @@ __squish__ requires that the Docker expiermental settings be enabled. Add the fo
 } 
 ```
 
-The build can be completed without __squish__ but it will result in much larger image.
+The build can be completed without __squish__ but it will result in much larger image. The default will build amd64 based images.
 ```
 docker build --squash -t jeffersonjhunt/shinysdr .
 ```
 
-## Local build environment
+## Alternate architectures
 
-The following will build a local environment for creating platform specific images.
+The following instructions are for building platform specific images. The currently supported images (PLATFORM) types are:
 
-### Raspberry PI
+  `amd64`, `i386`, `arm32v7`
 
-[Debian Wiki](https://wiki.debian.org/RaspberryPi/qemu-user-static "Debian Qemu Raspberry") used for creating an Raspbian image for local building/testing.
+In theory any platform supported by [Docker](https://github.com/docker-library/official-images#architectures-other-than-amd64 "Alternate Architectures") and [Debian](https://hub.docker.com/_/debian "Debian Platforms") would work, but only the aforementioned ones have been tested.
 
-Only alterations to the instructions will be listed here.
+### 32 bit support (i386)
 
-Download the image:
+To build the image requires the additional `--build-arg` to be passed set to `i386`.
+
 ```
-wget https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-04-09/2019-04-08-raspbian-stretch.zip
-```
-
-__WARNING!!!__ be sure to select the correct loopback device!
-
-Increase disk size by 4GB
-```
-dd if=/dev/zero bs=1M count=4096 >> 2019-04-08-raspbian-stretch.img 
-sudo losetup -f -P --show 2019-04-08-raspbian-stretch.img
+docker build --squash --build-arg PLATFORM=i386 -t jeffersonjhunt/shinysdr .
 ```
 
-Fix partitioning... 
+### Raspberry PI (arm32v7)
+
+In order to build `arm32v7` based containers the build will need to be performed on an Raspberry PI or using Qemu on a Linux machine with [`binfmt-support`](https://en.wikipedia.org/wiki/Binfmt_misc "binfmt").
+
+This page [Debian Wiki](https://wiki.debian.org/RaspberryPi/qemu-user-static "Debian Qemu Raspberry") used for creating an Raspbian image for local building/testing goes further than necessary, but provides excellent background information. The minimum supporting packages can be installed with:
+
 ```
-sudo parted /dev/loop5
-GNU Parted 3.2
-Using /dev/loop5
-
-(parted) print                                                           
-Number  Start   End     Size    Type     File system  Flags
- 1      4194kB  49.2MB  45.0MB  primary  fat32        lba
- 2      50.3MB  3481MB  3431MB  primary  ext4
-
-(parted) rm 2                  
-(parted) mkpart primary 50.3
-End? 100%                                                                 
-(parted) quit
+sudo apt-get update
+sudo apt-get install qemu-user
+sudo apt-get install qemu-user-static
 ```
 
-After completing the resize enter CHROOT jail
+To build the image requires the additional `--build-arg` to be passed set to `arm32v7`. *__NOTE:__ on an i7-6600 this process takes several hours to complete.*
+
 ```
-mkdir mount
-sudo losetup -f -P --show 2019-04-08-raspbian-stretch.img
-sudo mount /dev/loop5p2 -o rw mount
-cd mount
-sudo mount --bind /dev dev/
-sudo mount --bind /sys sys/
-sudo mount --bind /proc proc/
-sudo mount --bind /dev/pts dev/pts
+docker build --squash --build-arg PLATFORM=arm32v7 -t jeffersonjhunt/shinysdr .
 ```

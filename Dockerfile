@@ -1,10 +1,8 @@
-FROM arm32v7/debian:stable-slim
+ARG PLATFORM=amd64
+FROM ${PLATFORM}/debian:stable-slim
 LABEL maintainer "Jefferson J. Hunt <jeffersonjhunt@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
-
-# Enable cross compiling arm image
-COPY qemu-arm-static /usr/bin/qemu-arm-static
 
 # Ensure that we always use UTF-8, US English locale and UTC time
 RUN apt-get update && apt-get install -y locales && \
@@ -71,11 +69,10 @@ RUN git clone https://github.com/bistromath/gr-air-modes.git && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf /opt/gr-air-modes
 
-# Compilation errors on ARMHF
-#RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
-#  cd gr-radioteletype && \
-#  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-#  cd /opt && rm -rf /opt/gr-radioteletype
+RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
+  cd gr-radioteletype && \
+  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
+  cd /opt && rm -rf /opt/gr-radioteletype
 
 RUN git clone https://github.com/EliasOenal/multimon-ng.git && \
   cd multimon-ng && \
