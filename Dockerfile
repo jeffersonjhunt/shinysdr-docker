@@ -69,11 +69,6 @@ RUN git clone https://github.com/bistromath/gr-air-modes.git && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf /opt/gr-air-modes
 
-RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
-  cd gr-radioteletype && \
-  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf /opt/gr-radioteletype
-
 RUN git clone https://github.com/EliasOenal/multimon-ng.git && \
   cd multimon-ng && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
@@ -99,6 +94,13 @@ RUN git clone https://github.com/argilo/gr-dsd.git && \
   cd gr-dsd && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
   cd /opt && rm -rf gr-dsd
+
+COPY patches/radioteletype.patch /tmp/radioteletype.patch
+RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
+  cd gr-radioteletype && \
+  patch -p1 < /tmp/radioteletype.patch && \
+  mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
+  cd /opt && rm -rf /opt/gr-radioteletype
 
 # Build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr.git && \

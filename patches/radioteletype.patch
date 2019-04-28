@@ -1,0 +1,22 @@
+diff --git a/lib/baudot_encode_bb_impl.h b/lib/baudot_encode_bb_impl.h
+index 138be8e..0d20f11 100644
+--- a/lib/baudot_encode_bb_impl.h
++++ b/lib/baudot_encode_bb_impl.h
+@@ -29,7 +29,7 @@ namespace gr {
+     static const char FIGURES = 0x1b;
+     static const char LETTERS = 0x1f;
+ 
+-    static const char ascii_to_letters[128] = {
++    static const signed char ascii_to_letters[128] = {
+ //    '\x00'   '\x01'   '\x02'   '\x03'   '\x04'   '\x05'   '\x06'   '\x07'
+       0x00,    -1  ,    -1  ,    -1  ,    -1  ,    -1  ,    -1  ,    -1  ,
+ //    '\x08'   '\t'     '\n'     '\x0b'   '\x0c'   '\r'     '\x0e'   '\x0f'
+@@ -64,7 +64,7 @@ namespace gr {
+       0x1d,    0x15,    0x11,    -1  ,    -1  ,    -1  ,    -1  ,    -1
+     };
+ 
+-    static const char ascii_to_figures[128] = {
++    static const signed char ascii_to_figures[128] = {
+ //   '\x00'   '\x01'   '\x02'   '\x03'   '\x04'   '\x05'   '\x06'   '\x07'
+      0x00,    -1  ,    -1  ,    -1  ,    -1  ,    -1  ,    -1  ,    0x05,
+ //   '\x08'   '\t'     '\n'     '\x0b'   '\x0c'   '\r'     '\x0e'   '\x0f'
