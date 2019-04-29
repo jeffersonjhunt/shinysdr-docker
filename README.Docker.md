@@ -14,9 +14,9 @@
 
    [jeffersonjhunt](https://hub.docker.com/u/jeffersonjhunt "Profile of Jefferson J Hunt")
 
-* __Supported architectures: (more info)__
+* __Supported architectures: [(more info)](https://github.com/docker-library/official-images#architectures-other-than-amd64 "Docker alt architectures")__
 
-   amd64, i386, armhf, arm32v5, arm32v6, arm32v7, arm64v8
+   amd64, i386, arm32v7 (armhf)
 
 * __Source of this description:__
 

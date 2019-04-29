@@ -4,7 +4,7 @@ This document covers the building of the Docker multi-platform images.
 
 ## Docker image
 
-__squish__ requires that the Docker expiermental settings be enabled. Add the following to `/etc/docker/daemon.json`
+__squish__ requires that the Docker experimental settings be enabled. Add the following to `/etc/docker/daemon.json`
 ```
 { 
     "experimental": true 
@@ -15,6 +15,12 @@ The build can be completed without __squish__ but it will result in much larger 
 ```
 docker build --squash -t jeffersonjhunt/shinysdr .
 ```
+
+## Patches
+
+### gr-radioteletype
+
+There are `char` narrowing errors in the current *master* branch of [gr-radioteletype](https://github.com/bitglue/gr-radioteletype "gr-radioteletype master branch") for `arm` architectures. The [radioteletype.patch](https://github.com/jeffersonjhunt/shinysdr-docker/blob/devel/patches/radioteletype.patch "radioteletype.patch") in `patches` will add `signed char` and correct the issue in `ascii_to_letters` and `ascii_to_figures`.
 
 ## Alternate architectures
 
