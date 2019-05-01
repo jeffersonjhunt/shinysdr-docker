@@ -47,22 +47,13 @@ RUN apt-get install -y \
 WORKDIR /opt
 
 # Add modules/plugins
-RUN curl https://iweb.dl.sourceforge.net/project/hamlib/hamlib/3.3/hamlib-3.3.tar.gz -o /tmp/hamlib-3.3.tar.gz && \
-  tar -zxvf /tmp/hamlib-3.3.tar.gz && \
-  cd hamlib-3.3 && \
-  ./configure --prefix=/usr \
-    --with-python-binding \
-    --with-xml-support && \
-  make && make install && \
-  cd /opt && rm -rf /opt/hamlib-3.3
-
-RUN curl --insecure https://physics.princeton.edu/pulsar/k1jt/wsjtx-2.0.1.tgz -o /tmp/wsjtx-2.0.1.tgz && \
-  tar zxvf /tmp/wsjtx-2.0.1.tgz && \
-  cd wsjtx-2.0.1 && \
+COPY assets/wsjtx-2.1.0-rc5.tgz /tmp/wsjtx-2.1.0-rc5.tgz
+RUN tar zxvf /tmp/wsjtx-2.1.0-rc5.tgz && \
+  cd wsjtx-2.1.0-rc5 && \
   mkdir build && cd build && \
   cmake -DWSJT_SKIP_MANPAGES=ON -DWSJT_GENERATE_DOCS=OFF ../ && \
   cmake --build . && cmake --build . --target install && ldconfig && \
-  cd /opt && rm -rf wsjtx-2.0.1
+  cd /opt && rm -rf wsjtx-2.1.0-rc5
 
 RUN git clone https://github.com/bistromath/gr-air-modes.git && \
   cd gr-air-modes && \
