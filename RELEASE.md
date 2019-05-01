@@ -1,6 +1,8 @@
-### v1.3.1 (TBD)
+### v1.4.0 (TBD)
 
-* add arm64v8 multi-platform support
+* update to wsjtx-2.1.0-rc5
+* remove direct hamlib support (in favor of bundled version of wsjtx)
+* add Makefile support to provide consistent builds
 
 ### v1.3.0 (Mon Apr 29 14:47:54 CDT 2019)
 
@@ -9,6 +11,7 @@
   * amd64
   * i386
   * arm32v7 (armhf)
+  * arm64v8 (added post release on 4/30/2019)
 * create patches for gr-radioteletype for ARM architectures
 * latest debian-slim image and patches (as of 4/29/2019)
 

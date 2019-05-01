@@ -58,7 +58,4 @@ docker build --squash --build-arg PLATFORM=arm32v7 -t jeffersonjhunt/shinysdr .
 
 ### nVidia Jetson Nano (arm64v8)
 
-*__NOTE:__ Raspberry PI and PINE64 official support will be added in the near future. PINE64 should work out of the box, but 64 Bit Raspian is not avaiable and requires sourcing a new base distro to test.*
-
-
-
+*__NOTE:__ Raspberry PI and PINE64 official support will be added in the near future. PINE64 should work out of the box, but 64 Bit Raspian is not available and requires sourcing a new base distro to test.*

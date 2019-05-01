@@ -1,8 +1,8 @@
 # Supported tags and respective Dockerfile links
 
 * [latest](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/Dockerfile "Dockerfile")
-* [v1.2.1](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.2.1/Dockerfile "Dockerfile")
 * [v1.3.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.3.0/Dockerfile "Dockerfile")
+* [v1.4.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.0/Dockerfile "Dockerfile")
 
 # Quick reference
 

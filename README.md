@@ -4,15 +4,15 @@ This document covers the current state of the Docker built image. It enumerates 
 
 ## Releases
 
-See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.3.0/RELEASE.md "RELEASE.md") for more details.
+See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.0/RELEASE.md "RELEASE.md") for more details.
 
-* v1.3.0 - 
-    * [Dockerfile](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.3.0/Dockerfile "Dockerfile")
+* v1.4.0 - 
+    * [Dockerfile](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.0/Dockerfile "Dockerfile")
     * [Docker Image](https://hub.docker.com/r/jeffersonjhunt/shinysdr "Docker Image")
 
 ## Basics
 
-See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.3.0/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
+See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.0/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
 
 ### Init
 
