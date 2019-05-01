@@ -1,3 +1,7 @@
+### v1.3.1 (TBD)
+
+* add arm64v8 multi-platform support
+
 ### v1.3.0 (Mon Apr 29 14:47:54 CDT 2019)
 
 * repackage with __squish__ to reduce image size by >30%

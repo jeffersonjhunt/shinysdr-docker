@@ -26,7 +26,7 @@ There are `char` narrowing errors in the current *master* branch of [gr-radiotel
 
 The following instructions are for building platform specific images. The currently supported images (PLATFORM) types are:
 
-  `amd64`, `i386`, `arm32v7`
+  `amd64`, `i386`, `arm32v7`, `arm64v8`
 
 In theory any platform supported by [Docker](https://github.com/docker-library/official-images#architectures-other-than-amd64 "Alternate Architectures") and [Debian](https://hub.docker.com/_/debian "Debian Platforms") would work, but only the aforementioned ones have been tested.
 
@@ -55,3 +55,10 @@ To build the image requires the additional `--build-arg` to be passed set to `ar
 ```
 docker build --squash --build-arg PLATFORM=arm32v7 -t jeffersonjhunt/shinysdr .
 ```
+
+### nVidia Jetson Nano (arm64v8)
+
+*__NOTE:__ Raspberry PI and PINE64 official support will be added in the near future. PINE64 should work out of the box, but 64 Bit Raspian is not avaiable and requires sourcing a new base distro to test.*
+
+
+
