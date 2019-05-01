@@ -7,7 +7,8 @@ version = v1.4.0
 .PHONY: build manifest push publish clean quick
 
 %/build:
-	docker build --squash --build-arg PLATFORM=$(arch) -t jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version) .
+	docker build --squash --build-arg PLATFORM=$(arch) \
+	  -t jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version) .
 
 build:
 	for p in $(platforms); do \
@@ -15,8 +16,10 @@ build:
 	done
 
 %/manifest: 
-	docker manifest create --amend jeffersonjhunt/shinysdr:latest jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
-	docker manifest create --amend jeffersonjhunt/shinysdr:$(version) jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
+	docker manifest create --amend jeffersonjhunt/shinysdr:latest \
+	  jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
+	docker manifest create --amend jeffersonjhunt/shinysdr:$(version) \
+	  jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
 
 manifest: push
 	for p in $(platforms); do \
@@ -44,6 +47,7 @@ clean:
 	done
 
 %/run:
-	docker run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version) start /config/my-config
+	docker run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config \
+	  jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version) start /config/my-config
 
 quick: linux/amd64/build linux/amd64/run
