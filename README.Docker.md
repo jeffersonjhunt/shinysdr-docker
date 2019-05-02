@@ -16,7 +16,11 @@
 
 * __Supported architectures: [(more info)](https://github.com/docker-library/official-images#architectures-other-than-amd64 "Docker alt architectures")__
 
-   amd64, i386, arm32v7 (armhf)
+   amd64 (x86_64), i386, arm32v7 (armhf), arm64v8
+
+* __Supported Single Board Computers (SBC): [(more info)](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/guides "Guides")__
+
+   Raspberry Pi 3 Model B, Raspberry Pi 3 Model B+, NVIDIA Jetson Nano
 
 * __Source of this description:__
 

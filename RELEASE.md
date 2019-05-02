@@ -2,7 +2,9 @@
 
 * update to wsjtx-2.1.0-rc5
 * remove direct hamlib support (in favor of bundled version of wsjtx)
-* add Makefile support to provide consistent builds
+* added Makefile support to provide consistent builds
+* added guides for supported single board computers
+* updates to documentation
 
 ### v1.3.0 (Mon Apr 29 14:47:54 CDT 2019)
 

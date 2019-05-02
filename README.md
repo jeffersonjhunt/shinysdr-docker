@@ -14,16 +14,18 @@ See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.0/R
 
 See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.0/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
 
+Single Board Computers (SBC) like the *Raspberry Pi* and *NVIDIA Jetson Nano* are supported via Docker with specific guides located [here](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/guides "Guides").
+
 ### Init
 
-```
-docker run --rm -v ~/.shinysdr:/config jeffersonjhunt/shinysdr init /config/my-config
+```bash
+$ docker run --rm -v ~/.shinysdr:/config jeffersonjhunt/shinysdr init /config/my-config
 ```
 
 ### Run
 
-```
-docker run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config jeffersonjhunt/shinysdr start /config/my-config
+```bash
+$ docker run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config jeffersonjhunt/shinysdr start /config/my-config
 ```
 
 ## Config & Control
@@ -35,36 +37,36 @@ The `shinysdr-entrypoint.sh` is used to simplify the interaction of Docker with 
 #### Examples
 
 init `my-config`:
-```
+```bash
 $ shinysdr-entrypoint.sh -d -i init /my-config
 ```
 
 init `my-config` using Docker:
-```
+```bash
 $ docker run --rm -v ~/.shinysdr:/config jeffersonjhunt/shinysdr init /config/my-config
 ```
 
 start with `my-config`:
-```
+```bash
 $ shinysdr-entrypoint.sh -d -i start /my-config
 ```
 
 start with `my-config` using Docker:
-```
+```bash
 $ docker run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config --name shinysdr jeffersonjhunt/shinysdr start /config/my-config
 ```
 
 stop:
-```
+```bash
 $ shinysdr-entrypoint.sh -d -i stop
 ```
 
 stop using Docker:
-```
+```bash
 $ docker exec shinysdr shinysdr-entrypoint.sh stop
 ```
 or
-```
+```bash
 $ docker stop shinysdr
 ```
 

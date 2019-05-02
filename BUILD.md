@@ -2,18 +2,53 @@
 
 This document covers the building of the Docker multi-platform images.
 
+## Simplified Makefile system
+
+There is a `Makefile` to ease creating the multi-platform images, bundle them in a release and push them to DockerHub.
+
+__NOTES:__ 
+
+* Don't forget to update the version in the `Makefile`
+* Login to DockerHub before publishing a release or pushing a new image
+
+### Build All
+
+```bash
+$ make
+```
+
+### Build just for linux on amd64
+
+```bash
+$ make linux/amd64/build
+```
+
+### Build linux on amd64 and run (useful for debugging)
+
+```bash
+$ make quick
+```
+
+### Release a new build to DockerHub
+
+```bash
+$ make publish
+```
+
 ## Docker image
 
 __squish__ requires that the Docker experimental settings be enabled. Add the following to `/etc/docker/daemon.json`
-```
+
+```json
 { 
     "experimental": true 
 } 
 ```
 
 The build can be completed without __squish__ but it will result in much larger image. The default will build amd64 based images.
-```
-docker build --squash -t jeffersonjhunt/shinysdr .
+
+```bash
+$ docker build --squash -t jeffersonjhunt/shinysdr .
 ```
 
 ## Patches
@@ -34,8 +69,8 @@ In theory any platform supported by [Docker](https://github.com/docker-library/o
 
 To build the image requires the additional `--build-arg` to be passed set to `i386`.
 
-```
-docker build --squash --build-arg PLATFORM=i386 -t jeffersonjhunt/shinysdr .
+```bash
+$ docker build --squash --build-arg PLATFORM=i386 -t jeffersonjhunt/shinysdr .
 ```
 
 ### Raspberry PI (arm32v7)
@@ -44,18 +79,27 @@ In order to build `arm32v7` based containers the build will need to be performed
 
 This page [Debian Wiki](https://wiki.debian.org/RaspberryPi/qemu-user-static "Debian Qemu Raspberry") used for creating an Raspbian image for local building/testing goes further than necessary, but provides excellent background information. The minimum supporting packages can be installed with:
 
-```
-sudo apt-get update
-sudo apt-get install qemu-user
-sudo apt-get install qemu-user-static
+```bash
+$ sudo apt-get update
+$ sudo apt-get install qemu-user
+$ sudo apt-get install qemu-user-static
 ```
 
 To build the image requires the additional `--build-arg` to be passed set to `arm32v7`. *__NOTE:__ on an i7-6600 this process takes several hours to complete.*
 
-```
-docker build --squash --build-arg PLATFORM=arm32v7 -t jeffersonjhunt/shinysdr .
+```bash
+$ docker build --squash --build-arg PLATFORM=arm32v7 -t jeffersonjhunt/shinysdr .
 ```
 
-### nVidia Jetson Nano (arm64v8)
+### NVIDIA Jetson Nano (arm64v8)
 
-*__NOTE:__ Raspberry PI and PINE64 official support will be added in the near future. PINE64 should work out of the box, but 64 Bit Raspian is not available and requires sourcing a new base distro to test.*
+*__NOTE:__ Raspberry PI and PINE64 official support will be added in the near future. PINE64 should work out of the box, but 64 Bit Raspbian is not trivial and requires sourcing a new base distro to test.*
+
+To cross-compile use the same procedure as the __Raspberry PI (arm32v7)__ setting the `--build-arg` to `arm64v8`. *__NOTE:__ on an i7-6600 this process takes several hours to complete.*
+
+__Instead of cross-compiling building on a `NVIDIA Jetson Nano` is strongly suggested as it is much quicker.__
+
+```bash
+$ docker build --squash --build-arg PLATFORM=arm64v8 -t jeffersonjhunt/shinysdr .
+```
+
