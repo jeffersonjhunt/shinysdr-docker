@@ -4,15 +4,24 @@ os = $(word 1, $(subst /, ,$@))
 arch = $(word 2, $(subst /, ,$@))
 version = v1.4.0
 
-.PHONY: build manifest push publish clean quick
+.PHONY: build squash manifest push publish clean quick
 
 %/build:
-	docker build --squash --build-arg PLATFORM=$(arch) \
+	docker build --build-arg PLATFORM=$(arch) \
 	  -t jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version) .
 
 build:
 	for p in $(platforms); do \
 		$(MAKE) $$p/build; \
+	done
+
+%/squash:
+	docker build --squash --build-arg PLATFORM=$(arch) \
+	  -t jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version) .
+
+squash:
+	for p in $(platforms); do \
+		$(MAKE) $$p/squash; \
 	done
 
 %/manifest: 
@@ -29,7 +38,7 @@ manifest: push
 %/push:
 	docker push jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
 
-push: build
+push: squash
 	for p in $(platforms); do \
 		$(MAKE) $$p/push; \
 	done
