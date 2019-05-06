@@ -1,4 +1,8 @@
-### v1.4.0 (TBD)
+### v1.4.1 (TBD)
+
+
+
+### v1.4.0 (Mon May  6 07:28:54 CDT 2019)
 
 * update to wsjtx-2.1.0-rc5
 * remove direct hamlib support (in favor of bundled version of wsjtx)
