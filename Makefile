@@ -4,7 +4,7 @@ os = $(word 1, $(subst /, ,$@))
 arch = $(word 2, $(subst /, ,$@))
 version = v1.4.1
 
-.PHONY: build squash manifest push publish clean quick
+.PHONY: build squash manifest push publish clean quick debug
 
 %/build:
 	docker build --build-arg PLATFORM=$(arch) \
@@ -60,3 +60,8 @@ clean:
 	  jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version) start /config/my-config
 
 quick: linux/amd64/build linux/amd64/run
+
+%/debug: 
+	docker run -it --entrypoint /bin/bash jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
+
+debug: linux/amd64/debug
