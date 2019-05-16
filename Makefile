@@ -62,6 +62,6 @@ clean:
 quick: linux/amd64/build linux/amd64/run
 
 %/debug: 
-	docker run -it --entrypoint /bin/bash jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
+	docker run --rm -it --entrypoint /bin/bash jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
 
 debug: linux/amd64/debug

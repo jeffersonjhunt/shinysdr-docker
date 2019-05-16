@@ -1,5 +1,2 @@
-# Set the default behavior
-* text=auto
-
 # never add CRLF to shell files!
-*.sh text eol=lf
+*.sh text=lf
