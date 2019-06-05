@@ -1,5 +1,5 @@
 ARG PLATFORM=amd64
-FROM ${PLATFORM}/debian:stable-slim
+FROM ${PLATFORM}/debian:stable-20190506-slim
 LABEL maintainer "Jefferson J. Hunt <jeffersonjhunt@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -44,13 +44,13 @@ RUN apt-get install -y \
 WORKDIR /opt
 
 # Add modules/plugins
-COPY assets/wsjtx-2.1.0-rc5.tgz /tmp/wsjtx-2.1.0-rc5.tgz
-RUN tar zxvf /tmp/wsjtx-2.1.0-rc5.tgz && \
-  cd wsjtx-2.1.0-rc5 && \
+COPY assets/wsjtx-2.1.0-rc7.tgz /tmp/wsjtx-2.1.0-rc7.tgz
+RUN tar zxvf /tmp/wsjtx-2.1.0-rc7.tgz && \
+  cd wsjtx-2.1.0-rc7 && \
   mkdir build && cd build && \
   cmake -DWSJT_SKIP_MANPAGES=ON -DWSJT_GENERATE_DOCS=OFF ../ && \
   cmake --build . && cmake --build . --target install && ldconfig && \
-  cd /opt && rm -rf wsjtx-2.1.0-rc5
+  cd /opt && rm -rf wsjtx-2.1.0-rc7
 
 RUN git clone https://github.com/bistromath/gr-air-modes.git && \
   cd gr-air-modes && \

@@ -4,6 +4,8 @@
    * removes service_identity install step
    * removes pyasn1-modules install step
    * removes need to call fetch-js-deps
+* switch to pinned debian-stable-slim release (stable-20190506-slim) to control updates
+* update to wsjtx-2.1.0-rc7
 
 ### v1.4.0 (Mon May 6 07:28:54 CDT 2019)
 
