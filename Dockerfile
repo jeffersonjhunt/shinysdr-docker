@@ -16,9 +16,6 @@ ENV PYTHONIOENCODING=utf-8
 
 # Install supporting apps needed to build/run
 RUN apt-get install -y \    
-      curl \
-      wget \
-      vim-nox \
       git \
       build-essential \
       cmake \
@@ -96,18 +93,12 @@ RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
 # Build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr.git && \
   cd shinysdr && \
-  pip install --upgrade service_identity && \
-  pip install --upgrade pyasn1-modules && \
-  ./fetch-js-deps.sh && \
   python setup.py build && \
   python setup.py install && \
   cd /opt && rm -rf /opt/shinysdr
 
 # Clean up APT when done.
 RUN apt-get purge -y \
-      curl \
-      wget \
-      vim-nox \
       git \
       build-essential \
       cmake \

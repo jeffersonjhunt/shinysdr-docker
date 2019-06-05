@@ -1,5 +1,10 @@
 ### v1.4.1 (TBD)
 
+* updated to latest shinysdr release
+   * removes service_identity install step
+   * removes pyasn1-modules install step
+   * removes need to call fetch-js-deps
+
 ### v1.4.0 (Mon May 6 07:28:54 CDT 2019)
 
 * update to wsjtx-2.1.0-rc5

@@ -81,19 +81,6 @@ The `Dockerfile` is broken into several __RUN__ sections to allow for quicker bu
 
 See: `BUILD.md` for complete details on building, debugging and packaging.
 
-### fetch-js-deps.sh
-
-This tool uses wget to retrieve files and needs to be switched out for curl (personal preference) to remove the dependency from the Dockerfile.
-
-TODO: Integrate fetch-js-deps or equivalent effects into setup.py
-
-### Python
-
-There are old and missing Python modules that require the following modules be added before starting ShinySDR:
-
-* pip install --upgrade service_identity
-* pip install --upgrade pyasn1-modules 
-
 ### Plugins/Modules
 
 The following optional plugins/modules are being added. The table tracks the current status, source, etc...
