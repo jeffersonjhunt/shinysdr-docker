@@ -90,7 +90,7 @@ The following optional plugins/modules are being added. The table tracks the cur
 | hamlib           | complete | latest**  | Controlling external hardware radios |
 | gr-air-modes     | complete | latest*   | ADS-B, aircraft transponders         |
 | gr-radioteletype | complete | latest*   | RTTY and PSK31 w/ARM patches         |
-| wsjtx            | complete | 2.1.0-rc5 | WSPR weak-signal radio               |
+| wsjtx            | complete | 2.1.0-rc7 | WSPR weak-signal radio               |
 | multimon-ng      | complete | latest*   | decodes digital transmission modes   |
 | rtl_433          | complete | 18.12     | Miscellaneous telemetry              |
 | gr-dsd           | complete | latest*   | Digital voice modes supported by DSD |
