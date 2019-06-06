@@ -2,7 +2,7 @@ platforms := linux/amd64 linux/i386 linux/arm32v7 linux/arm64v8
 
 os = $(word 1, $(subst /, ,$@))
 arch = $(word 2, $(subst /, ,$@))
-version = v1.4.1
+version = TBD
 
 .PHONY: build squash manifest push publish clean quick debug
 

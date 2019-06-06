@@ -1,3 +1,8 @@
+### TBD (TBD)
+
+TODO: complete setup guides for SBCs
+TODO: create windows native docker image
+
 ### v1.4.1 (Thu 06 Jun 2019 06:48:15 AM CDT)
 
 * updated to latest shinysdr release
