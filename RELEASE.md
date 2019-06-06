@@ -1,10 +1,10 @@
-### v1.4.1 (TBD)
+### v1.4.1 (Thu 06 Jun 2019 06:48:15 AM CDT)
 
 * updated to latest shinysdr release
    * removes service_identity install step
    * removes pyasn1-modules install step
    * removes need to call fetch-js-deps
-* switch to pinned debian-stable-slim release (stable-20190506-slim) to control updates
+* pin debian-stable-slim to release (stable-20190506-slim)
 * update to wsjtx-2.1.0-rc7
 
 ### v1.4.0 (Mon May 6 07:28:54 CDT 2019)
