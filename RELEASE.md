@@ -1,7 +1,11 @@
-### TBD (TBD)
+### TBD
 
 TODO: complete setup guides for SBCs
 TODO: create windows native docker image
+
+### v1.4.2 (Tue 25 Jun 2019 12:56:55 PM CDT)
+
+* updated debian-stable-slim to stable-20190610-slim
 
 ### v1.4.1 (Thu 06 Jun 2019 06:48:15 AM CDT)
 

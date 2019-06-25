@@ -1,5 +1,5 @@
 ARG PLATFORM=amd64
-FROM ${PLATFORM}/debian:stable-20190506-slim
+FROM ${PLATFORM}/debian:stable-20190610-slim
 LABEL maintainer "Jefferson J. Hunt <jeffersonjhunt@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive

@@ -4,15 +4,15 @@ This document covers the current state of the Docker built image. It enumerates 
 
 ## Releases
 
-See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.1/RELEASE.md "RELEASE.md") for more details.
+See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.2/RELEASE.md "RELEASE.md") for more details.
 
-* v1.4.1 - 
-    * [Dockerfile](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.1/Dockerfile "Dockerfile")
+* v1.4.2 - 
+    * [Dockerfile](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.2/Dockerfile "Dockerfile")
     * [Docker Image](https://hub.docker.com/r/jeffersonjhunt/shinysdr "Docker Image")
 
 ## Basics
 
-See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.1/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
+See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.2/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
 
 Single Board Computers (SBC) like the *Raspberry Pi* and *NVIDIA Jetson Nano* are supported via Docker with specific guides located [here](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/guides "Guides").
 
