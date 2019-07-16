@@ -1,7 +1,10 @@
-### TBD
+### v1.5.0 (TBD)
 
 TODO: complete setup guides for SBCs
 TODO: create windows native docker image
+ * updated to debian buster (buster-20190708-slim)
+ * updated to wsjtx-2.1.0 final
+ * update makefile to support Windows (WSL 1 & 2)
 
 ### v1.4.2 (Tue 25 Jun 2019 12:56:55 PM CDT)
 

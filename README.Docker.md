@@ -2,8 +2,8 @@
 
 * [latest](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/Dockerfile "Dockerfile")
 * [v1.3.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.3.0/Dockerfile "Dockerfile")
-* [v1.4.1](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.1/Dockerfile "Dockerfile")
 * [v1.4.2](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.4.2/Dockerfile "Dockerfile")
+* [v1.5.0](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.5.0/Dockerfile "Dockerfile")
 
 # Quick reference
 
@@ -29,7 +29,7 @@
 
 * __Supported Docker versions:__
 
-   the latest CE release (down to 17-ce on a best-effort basis)
+   the latest CE release (down to 18-ce on a best-effort basis)
 
 # What is GNURadio + ShinySDR?
 
