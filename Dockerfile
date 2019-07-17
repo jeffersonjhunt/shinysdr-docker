@@ -44,13 +44,13 @@ RUN apt-get install -y \
 WORKDIR /opt
 
 # Add modules/plugins
-COPY assets/wsjtx-2.1.0-rc7.tgz /tmp/wsjtx-2.1.0-rc7.tgz
-RUN tar zxvf /tmp/wsjtx-2.1.0-rc7.tgz && \
-  cd wsjtx-2.1.0-rc7 && \
+COPY assets/wsjtx-2.1.0.tgz /tmp/wsjtx-2.1.0.tgz
+RUN tar zxvf /tmp/wsjtx-2.1.0.tgz && \
+  cd wsjtx-2.1.0 && \
   mkdir build && cd build && \
   cmake -DWSJT_SKIP_MANPAGES=ON -DWSJT_GENERATE_DOCS=OFF ../ && \
   cmake --build . && cmake --build . --target install && ldconfig && \
-  cd /opt && rm -rf wsjtx-2.1.0-rc7
+  cd /opt && rm -rf wsjtx-2.1.0
 
 RUN git clone https://github.com/bistromath/gr-air-modes.git && \
   cd gr-air-modes && \
