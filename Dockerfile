@@ -2,20 +2,20 @@ ARG PLATFORM=amd64
 FROM ${PLATFORM}/debian:buster-20190708-slim
 LABEL maintainer "Jefferson J. Hunt <jeffersonjhunt@gmail.com>"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Ensure that we always use UTF-8, US English locale and UTC time
 RUN apt-get update && apt-get install -y locales && \
   localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
   echo "UTC" > /etc/timezone && \
   chmod 0755 /etc/timezone 
-ENV LANG en_US.utf8
+ENV LANG=en_US.utf8
 ENV LC_ALL=en_US.utf-8
 ENV LANGUAGE=en_US:en
 ENV PYTHONIOENCODING=utf-8
 
 # Install supporting apps needed to build/run
-RUN apt-get install -y \    
+RUN apt-get install -y \
       git \
       build-essential \
       cmake \
@@ -25,7 +25,7 @@ RUN apt-get install -y \
       swig \
       texinfo \
       dh-autoreconf \
-      python \    
+      python \
       gfortran \
       gr-osmosdr \
       gnuradio \
@@ -37,9 +37,9 @@ RUN apt-get install -y \
       qtmultimedia5-dev \
       libqt5serialport5-dev \
       libfftw3-dev && \
-  curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
-  python /tmp/get-pip.py && \
-  pip install --upgrade pip
+    curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
+    python /tmp/get-pip.py && \
+    pip install --upgrade pip
 
 WORKDIR /opt
 
