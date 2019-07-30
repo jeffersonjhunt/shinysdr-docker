@@ -14,6 +14,8 @@ ENV LC_ALL=en_US.utf-8
 ENV LANGUAGE=en_US:en
 ENV PYTHONIOENCODING=utf-8
 
+COPY assets/* /tmp/
+
 # Install supporting apps needed to build/run
 RUN apt-get install -y \
       git \
@@ -37,37 +39,35 @@ RUN apt-get install -y \
       qtmultimedia5-dev \
       libqt5serialport5-dev \
       libfftw3-dev && \
-    curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
     python /tmp/get-pip.py && \
     pip install --upgrade pip
 
-WORKDIR /opt
+WORKDIR /build
 
 # Add modules/plugins
-COPY assets/wsjtx-2.1.0.tgz /tmp/wsjtx-2.1.0.tgz
 RUN tar zxvf /tmp/wsjtx-2.1.0.tgz && \
   cd wsjtx-2.1.0 && \
   mkdir build && cd build && \
   cmake -DWSJT_SKIP_MANPAGES=ON -DWSJT_GENERATE_DOCS=OFF ../ && \
   cmake --build . && cmake --build . --target install && ldconfig && \
-  cd /opt && rm -rf wsjtx-2.1.0
+  cd /build && rm -rf wsjtx-2.1.0
 
 RUN git clone https://github.com/bistromath/gr-air-modes.git && \
   cd gr-air-modes && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf /opt/gr-air-modes
+  cd /build && rm -rf /build/gr-air-modes
 
 RUN git clone https://github.com/EliasOenal/multimon-ng.git && \
   cd multimon-ng && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf multimon-ng
+  cd /build && rm -rf multimon-ng
 
 RUN git clone https://github.com/pothosware/SoapySDR.git && \
   cd SoapySDR && \
   git fetch --all --tags --prune && \
   git checkout tags/soapy-sdr-0.7.1 && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf SoapySDR
+  cd /build && rm -rf SoapySDR
 
 RUN git clone https://github.com/merbanan/rtl_433.git && \
   apt-get install -y librtlsdr-dev && \
@@ -75,27 +75,27 @@ RUN git clone https://github.com/merbanan/rtl_433.git && \
   git fetch --all --tags --prune && \
   git checkout tags/18.12 && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf rtl_433
+  cd /build && rm -rf rtl_433
 
 RUN git clone https://github.com/argilo/gr-dsd.git && \
   apt-get install -y libsndfile1-dev libitpp-dev && \
   cd gr-dsd && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf gr-dsd
+  cd /build && rm -rf gr-dsd
 
 COPY patches/radioteletype.patch /tmp/radioteletype.patch
 RUN git clone https://github.com/bitglue/gr-radioteletype.git && \
   cd gr-radioteletype && \
   patch -p1 < /tmp/radioteletype.patch && \
   mkdir build && cd build && cmake ../ && make && make install && ldconfig && \
-  cd /opt && rm -rf /opt/gr-radioteletype
+  cd /build && rm -rf /build/gr-radioteletype
 
 # Build and install ShinySDR
 RUN git clone https://github.com/kpreid/shinysdr.git && \
   cd shinysdr && \
   python setup.py build && \
   python setup.py install && \
-  cd /opt && rm -rf /opt/shinysdr
+  cd /build && rm -rf /build/shinysdr
 
 # Clean up APT when done.
 RUN apt-get purge -y \

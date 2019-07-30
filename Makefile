@@ -7,7 +7,7 @@ version = v1.5.0
 # to run under WSL use: make DOCKER=/mnt/c/Progra~1/Docker/Docker/resources/bin/docker.exe <TARGET>
 DOCKER = $(shell which docker)
 
-.PHONY: build squash manifest push publish clean quick debug
+.PHONY: build squash manifest push publish clean quick debug deps
 
 %/build:
 	$(DOCKER) build --build-arg PLATFORM=$(arch) \
@@ -54,9 +54,18 @@ publish: manifest
 	$(DOCKER) rmi jeffersonjhunt/shinysdr:$(os)-$(arch)-$(version)
 
 clean:
+	rm -f assets/get-pip.py
+	rm -f assets/wsjtx-2.1.0.tgz
+	rmdir assets
+
 	for p in $(platforms); do \
 		$(MAKE) $$p/clean; \
 	done
+
+deps:
+	mkdir -p assets
+	curl -k https://bootstrap.pypa.io/get-pip.py -o assets/get-pip.py
+	curl -k https://physics.princeton.edu/pulsar/k1jt/wsjtx-2.1.0.tgz -o assets/wsjtx-2.1.0.tgz
 
 %/run:
 	$(DOCKER) run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config \
