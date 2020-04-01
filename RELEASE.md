@@ -1,9 +1,10 @@
-### v1.5.0 (TBD)
+### v1.5.1 (Wed Apr  1 10:23:53 CDT 2020)
 
-TODO: complete setup guides for SBCs
-TODO: create windows native docker image
- * updated to debian buster (buster-20190708-slim)
- * updated to wsjtx-2.1.0 final
+ * updated to debian buster (debian:10-slim)
+ * updated to latest shinysdr (04.01.2020) [fix for audio in chromium]
+ * updated to wsjtx-2.1.2
+ * updated to rtl_433 20.02
+ * updated to SoapySDR 0.7.2 
  * update makefile to support Windows (WSL 1 & 2)
 
 ### v1.4.2 (Tue 25 Jun 2019 12:56:55 PM CDT)

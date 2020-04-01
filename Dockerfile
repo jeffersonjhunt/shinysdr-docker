@@ -3,7 +3,7 @@ FROM ${PLATFORM}/debian:10-slim
 LABEL maintainer "Jefferson J. Hunt <jeffersonjhunt@gmail.com>"
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV MAKEFLAGS=-j8
+ENV MAKEFLAGS='-j 8'
 
 # Ensure that we always use UTF-8, US English locale and UTC time
 RUN apt-get update && apt-get install -y locales && \

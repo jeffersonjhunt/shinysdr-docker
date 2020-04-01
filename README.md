@@ -4,15 +4,15 @@ This document covers the current state of the Docker built image. It enumerates 
 
 ## Releases
 
-See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.5.0/RELEASE.md "RELEASE.md") for more details.
+See [RELEASE.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.5.1/RELEASE.md "RELEASE.md") for more details.
 
 * v1.4.2 - 
-    * [Dockerfile](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.5.0/Dockerfile "Dockerfile")
+    * [Dockerfile](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.5.1/Dockerfile "Dockerfile")
     * [Docker Image](https://hub.docker.com/r/jeffersonjhunt/shinysdr "Docker Image")
 
 ## Basics
 
-See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.5.0/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
+See the [README.Docker.md](https://github.com/jeffersonjhunt/shinysdr-docker/blob/v1.5.1/README.Docker.md "README.Docker.md") for more information on basic operation using Docker.
 
 Single Board Computers (SBC) like the *Raspberry Pi* and *NVIDIA Jetson Nano* are supported via Docker with specific guides located [here](https://github.com/jeffersonjhunt/shinysdr-docker/blob/master/guides "Guides").
 
@@ -90,11 +90,11 @@ The following optional plugins/modules are being added. The table tracks the cur
 | hamlib           | complete | latest**  | Controlling external hardware radios |
 | gr-air-modes     | complete | latest*   | ADS-B, aircraft transponders         |
 | gr-radioteletype | complete | latest*   | RTTY and PSK31 w/ARM patches         |
-| wsjtx            | complete | 2.1.0     | WSPR weak-signal radio               |
+| wsjtx            | complete | 2.1.2     | WSPR weak-signal radio               |
 | multimon-ng      | complete | latest*   | decodes digital transmission modes   |
-| rtl_433          | complete | 18.12     | Miscellaneous telemetry              |
+| rtl_433          | complete | 20.02     | Miscellaneous telemetry              |
 | gr-dsd           | complete | latest*   | Digital voice modes supported by DSD |
-| SoapySDR         | complete | 0.7.1     | Vendor/platform neutral SDR library  |
+| SoapySDR         | complete | 0.7.2     | Vendor/platform neutral SDR library  |
 
 &ast; master as of build date
 &ast;&ast; patched version from wsjtx
