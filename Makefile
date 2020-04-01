@@ -3,7 +3,7 @@ platforms := linux/amd64 linux/i386 linux/arm32v7 linux/arm64v8
 os = $(word 1, $(subst /, ,$@))
 arch = $(word 2, $(subst /, ,$@))
 
-version = v1.5.0
+version = v1.5
 
 # to run under WSL use: make DOCKER=/mnt/c/Progra~1/Docker/Docker/resources/bin/docker.exe <TARGET>
 DOCKER = $(shell which docker)
@@ -37,7 +37,7 @@ publish: manifest
 
 clean:
 	rm -f assets/get-pip.py
-	rm -f assets/wsjtx-2.1.0.tgz
+	rm -f assets/wsjtx-2.1.2.tgz
 	rmdir assets
 
 	for p in $(platforms); do \
@@ -47,7 +47,7 @@ clean:
 deps:
 	mkdir -p assets
 	curl -k https://bootstrap.pypa.io/get-pip.py -o assets/get-pip.py
-	curl -k https://physics.princeton.edu/pulsar/k1jt/wsjtx-2.1.0.tgz -o assets/wsjtx-2.1.0.tgz
+	curl -k https://physics.princeton.edu/pulsar/K1JT/wsjtx-2.1.2.tgz -o assets/wsjtx-2.1.2.tgz
 
 %/run:
 	$(DOCKER) run --rm -p 8100:8100 -p 8101:8101 -v ~/.shinysdr:/config \
